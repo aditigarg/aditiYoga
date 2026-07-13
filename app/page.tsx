@@ -338,8 +338,11 @@ export default function Home() {
           <p>
             You can practice with Aditi across San Francisco at{" "}
             <a href="https://lovestoryyoga.com/schedule-valencia">Lovestory</a>,{" "}
-            <a href="https://www.haumstudios.com/schedule">Haum</a>, Mission
-            Cliffs,{" "}
+            <a href="https://www.haumstudios.com/schedule">Haum</a>,{" "}
+            <a href="https://touchstoneclimbing.com/mission-cliffs/calendar/">
+              Mission Cliffs
+            </a>
+            ,{" "}
             <a href="https://www.castroroom.com/schedule">The Castro Room</a>,
             and SF Parks & Rec offerings.
           </p>
