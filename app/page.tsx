@@ -31,15 +31,21 @@ const locationMaps: Record<string, string> = {
 const locations = [
   {
     name: "SF Parks & Rec",
-    area: "Upper Noe Valley + Civic Center",
-    format: "Rec center sessions and free city class",
+    area: "Upper Noe Valley Rec Center",
+    address: "295 Day Street",
+    mapLink:
+      "https://www.google.com/maps/search/?api=1&query=Upper+Noe+Recreation+Center+295+Day+St+San+Francisco",
     link: sfRecSignup,
     cta: "SF Rec schedule",
+    image: "/upper-noe-rec-center.png",
+    imageAlt: "Upper Noe Valley Rec Center practice room with wood floor and vaulted ceiling",
   },
   {
     name: "49 South Van Ness",
-    area: "Civic Center",
-    format: "Free Wednesday lunchtime class",
+    area: "SF Arts Commission",
+    address: "49 South Van Ness",
+    mapLink:
+      "https://www.google.com/maps/search/?api=1&query=49+South+Van+Ness+San+Francisco",
     link: "https://www.google.com/maps/search/?api=1&query=49+South+Van+Ness+San+Francisco",
     cta: "View location",
     image: "/49-south-van-ness.png",
@@ -47,29 +53,51 @@ const locations = [
   },
   {
     name: "Mission Cliffs",
-    area: "Mission",
-    format: "Touchstone fitness calendar",
+    area: "Mission Cliffs",
+    address: "2295 Harrison Street",
+    mapLink:
+      "https://www.google.com/maps/search/?api=1&query=Mission+Cliffs+2295+Harrison+St+San+Francisco",
     link: "https://touchstoneclimbing.com/mission-cliffs/calendar/",
     cta: "Mission Cliffs calendar",
   },
   {
     name: "Lovestory",
-    area: "Mission",
-    format: "Studio practice",
+    area: "Lovestory",
+    addresses: [
+      {
+        label: "473 Valencia Street",
+        href: "https://www.google.com/maps/search/?api=1&query=Love+Story+Yoga+473+Valencia+Street+San+Francisco",
+      },
+      {
+        label: "Marin Country Mart, Larkspur",
+        href: "https://www.google.com/maps/search/?api=1&query=Love+Story+Yoga+Marin+Country+Mart+Larkspur",
+      },
+    ],
     link: "https://lovestoryyoga.com/schedule?_mt=%2Fschedule%2Fdaily%2F48541%3FactiveDate%3D2026-07-12",
     cta: "Lovestory schedule",
   },
   {
     name: "Haum",
-    area: "Mission / Haight",
-    format: "Studio practice",
+    area: "Haum",
+    addresses: [
+      {
+        label: "2973 16th St, 5th Floor",
+        href: "https://www.google.com/maps/search/?api=1&query=HAUM+STUDIOS+MISSION+2973+16th+St+5th+Floor+San+Francisco",
+      },
+      {
+        label: "780 Stanyan Street",
+        href: "https://www.google.com/maps/search/?api=1&query=HAUM+STUDIOS+HAIGHT+ASHBURY+780+Stanyan+Street+San+Francisco",
+      },
+    ],
     link: "https://www.haumstudios.com/schedule",
     cta: "Haum schedule",
   },
   {
     name: "The Castro Room",
-    area: "Castro",
-    format: "Community class",
+    area: "The Castro Room",
+    address: "97 Collingwood Street",
+    mapLink:
+      "https://www.google.com/maps/search/?api=1&query=The+Castro+Room+97+Collingwood+St+San+Francisco",
     link: "https://www.castroroom.com/schedule",
     cta: "Castro Room schedule",
   },
@@ -265,16 +293,14 @@ export default function Home() {
         <nav className="nav" aria-label="Primary navigation">
           <a href="#weekly">Weekly</a>
           <a href="#monthly">Monthly</a>
+          <a href={calendarSubscribeUrl}>Add Calendar</a>
           <a href="#locations">Locations</a>
           <a href={instagramUrl}>Instagram</a>
         </nav>
         <div className="hero__content">
           <p className="eyebrow">San Francisco yoga classes</p>
-          <h1 id="hero-title">Aditi Yoga</h1>
-          <p>
-            Grounded, breath-led yoga for people who want to feel stronger,
-            steadier, and more at home in their bodies.
-          </p>
+          <h1 id="hero-title">Practice Yoga with Aditi</h1>
+          <p>Pragmatic practice of breath, movement and philosophy</p>
           <div className="hero__actions" aria-label="Class actions">
             <a className="button button--primary" href="#weekly">
               See upcoming classes
@@ -286,20 +312,36 @@ export default function Home() {
       <section className="section intro" aria-labelledby="bio-title">
         <div>
           <p className="eyebrow">Practice with Aditi</p>
-          <h2 id="bio-title">Practice that makes room for real life.</h2>
         </div>
         <div className="intro__copy">
           <p>
-            Aditi teaches yoga with an emphasis on clear alignment, steady
-            breath, and an atmosphere that feels welcoming without losing depth.
-            Her classes move with intention: enough heat to build capacity,
-            enough stillness to listen, and enough choice to meet the body you
-            arrived with today.
+            Aditi has been leading classes for over 20 years in settings as
+            varied as MIT, youth camps, SF Parks & Rec, Bay Area tech
+            companies, and local studios. She was exposed to yoga philosophy
+            and elements of the Asana practice, Pranayama, and Naada Yoga from
+            a very young age at ashrams and schools in Rishikesh, Dharamshala,
+            Jaipur, and Delhi. She began delving into the physical practice in
+            her teens under the guidance of{" "}
+            <a href="https://www.hinduismtoday.com/magazine/jul-aug-sept-2023/i-learned-yoga-from-a-living-master/">
+              Swami Bua
+            </a>{" "}
+            (who was nearly 100 years old at the time). More recently, she’s
+            explored interests in Ayurveda, Advaita Vedanta, Panchakarma and
+            Karma Yoga (as it relates to bringing startups to success in the Bay
+            Area as well), and has deepened her training in many different
+            styles of the physical and Pranayama practice, including locally
+            with{" "}
+            <a href="https://www.rustywells.com/meet-rusty">Rusty Wells</a>,{" "}
+            <a href="https://www.stephaniesnyder.com/">Stephanie Snyder</a> and{" "}
+            <a href="https://jasonyoga.com/">Jason Crandell</a>.
           </p>
           <p>
-            You can practice with Aditi across San Francisco at Lovestory,
-            Haum, Mission Cliffs, The Castro Room, and SF Parks & Rec
-            offerings.
+            You can practice with Aditi across San Francisco at{" "}
+            <a href="https://lovestoryyoga.com/schedule-valencia">Lovestory</a>,{" "}
+            <a href="https://www.haumstudios.com/schedule">Haum</a>, Mission
+            Cliffs,{" "}
+            <a href="https://www.castroroom.com/schedule">The Castro Room</a>,
+            and SF Parks & Rec offerings.
           </p>
         </div>
       </section>
@@ -349,27 +391,45 @@ export default function Home() {
       <section className="section locations" id="locations">
         <div className="section__heading">
           <p className="eyebrow">Locations</p>
-          <p>
-            Each location links to its live schedule or map. The 49 South Van
-            Ness image shows the Wednesday class space.
-          </p>
         </div>
         <div className="venue-grid">
           {locations.map((location) => (
             <article className="venue-card" key={location.name}>
-              {location.name === "49 South Van Ness" ? (
+              {location.image ? (
                 <img
                   className="venue-card__image"
-                  src="/49-south-van-ness.png"
-                  alt="49 South Van Ness lobby where the free Wednesday yoga class meets"
+                  src={location.image}
+                  alt={location.imageAlt}
                 />
               ) : null}
               <div>
                 <p>{location.area}</p>
-                <h3>{location.name}</h3>
+                {"address" in location ? (
+                  <a className="venue-card__address" href={location.mapLink}>
+                    {location.address}
+                  </a>
+                ) : null}
+                {"addresses" in location ? (
+                  <div className="venue-card__addresses">
+                    {location.addresses.map((address) => (
+                      <a
+                        className="venue-card__address"
+                        href={address.href}
+                        key={address.label}
+                      >
+                        {address.label}
+                      </a>
+                    ))}
+                  </div>
+                ) : null}
+                {"address" in location || "addresses" in location ? null : (
+                  <h3>{location.name}</h3>
+                )}
               </div>
-              <span>{location.format}</span>
-              <a href={location.link}>{location.cta}</a>
+              {"format" in location ? <span>{location.format}</span> : null}
+              <a className="venue-card__cta" href={location.link}>
+                {location.cta}
+              </a>
             </article>
           ))}
         </div>
@@ -377,16 +437,20 @@ export default function Home() {
 
       <section className="section contact" id="instagram" aria-labelledby="instagram-title">
         <div>
-          <p className="eyebrow">Instagram</p>
-          <h2 id="instagram-title">Follow Aditi Yoga SF</h2>
+          <p className="eyebrow">Follow</p>
         </div>
         <p>
-          Follow along for schedule updates, class notes, and community
-          practice announcements.
+          Follow along for schedule updates and community practice
+          announcements.
         </p>
-        <a className="button button--primary" href={instagramUrl}>
-          Open Instagram
-        </a>
+        <div className="contact__actions">
+          <a className="button button--primary" href={instagramUrl}>
+            Open Instagram
+          </a>
+          <a className="button button--outline" href={calendarSubscribeUrl}>
+            Add Calendar
+          </a>
+        </div>
       </section>
     </main>
   );

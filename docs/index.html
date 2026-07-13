@@ -55,8 +55,9 @@
         width: 100%;
         height: 100%;
         object-fit: cover;
+        object-position: center top;
         filter: blur(5px);
-        transform: scale(1.035);
+        transform: scale(1.02);
       }
 
       .hero__overlay {
@@ -154,7 +155,7 @@
       }
 
       .button,
-      .venue-card a {
+      .venue-card__cta {
         min-height: 46px;
         display: inline-flex;
         align-items: center;
@@ -169,7 +170,7 @@
       }
 
       .button:hover,
-      .venue-card a:hover {
+      .venue-card__cta:hover {
         transform: translateY(-1px);
       }
 
@@ -209,6 +210,18 @@
 
       .intro__copy p {
         margin-bottom: 20px;
+      }
+
+      .intro__copy a {
+        color: var(--moss-dark);
+        font-weight: 800;
+        text-decoration: underline;
+        text-decoration-color: var(--clay);
+        text-underline-offset: 4px;
+      }
+
+      .intro__copy a:hover {
+        color: var(--moss);
       }
 
       .section__heading {
@@ -277,12 +290,28 @@
         font-size: 0.9rem;
       }
 
+      .venue-card__address {
+        display: inline-flex;
+        margin: -4px 0 12px;
+        color: var(--moss-dark);
+        font-size: 0.95rem;
+        font-weight: 800;
+        text-decoration: underline;
+        text-decoration-color: var(--clay);
+        text-underline-offset: 4px;
+      }
+
+      .venue-card__addresses {
+        display: grid;
+        justify-items: start;
+      }
+
       .venue-card span {
         display: block;
         line-height: 1.45;
       }
 
-      .venue-card a {
+      .venue-card__cta {
         width: 100%;
         margin-top: 28px;
         border-color: var(--moss);
@@ -301,6 +330,13 @@
       .contact > div,
       .contact p {
         max-width: 520px;
+      }
+
+      .contact__actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        justify-content: flex-end;
       }
 
       .contact .button--primary {
@@ -338,11 +374,12 @@
         }
 
         .button,
-        .venue-card a {
+        .venue-card__cta {
           width: 100%;
         }
 
         .calendar-actions,
+        .contact__actions,
         .contact {
           align-items: stretch;
           flex-direction: column;
@@ -366,16 +403,14 @@
         <nav class="nav" aria-label="Primary navigation">
           <a href="#weekly">Weekly</a>
           <a href="#monthly">Monthly</a>
+          <a href="https://calendar.google.com/calendar/render?cid=communityflowsf%40gmail.com">Add Calendar</a>
           <a href="#locations">Locations</a>
           <a href="https://www.instagram.com/aditi_yoga_sf/">Instagram</a>
         </nav>
         <div class="hero__content">
           <p class="eyebrow">San Francisco yoga classes</p>
-          <h1 id="hero-title">Aditi Yoga</h1>
-          <p>
-            Grounded, breath-led yoga for people who want to feel stronger,
-            steadier, and more at home in their bodies.
-          </p>
+          <h1 id="hero-title">Practice Yoga with Aditi</h1>
+          <p>Pragmatic practice of breath, movement and philosophy</p>
           <a class="button button--primary" href="#weekly">See upcoming classes</a>
         </div>
       </section>
@@ -383,19 +418,33 @@
       <section class="section intro" aria-labelledby="bio-title">
         <div>
           <p class="eyebrow">Practice with Aditi</p>
-          <h2 id="bio-title">Practice that makes room for real life.</h2>
         </div>
         <div class="intro__copy">
           <p>
-            Aditi teaches yoga with an emphasis on clear alignment, steady
-            breath, and an atmosphere that feels welcoming without losing depth.
-            Her classes move with intention: enough heat to build capacity,
-            enough stillness to listen, and enough choice to meet the body you
-            arrived with today.
+            Aditi has been leading classes for over 20 years in settings as
+            varied as MIT, youth camps, SF Parks & Rec, Bay Area tech
+            companies, and local studios. She was exposed to yoga philosophy
+            and elements of the Asana practice, Pranayama, and Naada Yoga from
+            a very young age at ashrams and schools in Rishikesh, Dharamshala,
+            Jaipur, and Delhi. She began delving into the physical practice in
+            her teens under the guidance of
+            <a href="https://www.hinduismtoday.com/magazine/jul-aug-sept-2023/i-learned-yoga-from-a-living-master/">Swami Bua</a>
+            (who was nearly 100 years old at the time). More recently, she’s
+            explored interests in Ayurveda, Advaita Vedanta, Panchakarma and
+            Karma Yoga (as it relates to bringing startups to success in the Bay
+            Area as well), and has deepened her training in many different
+            styles of the physical and Pranayama practice, including locally
+            with <a href="https://www.rustywells.com/meet-rusty">Rusty Wells</a>,
+            <a href="https://www.stephaniesnyder.com/">Stephanie Snyder</a> and
+            <a href="https://jasonyoga.com/">Jason Crandell</a>.
           </p>
           <p>
-            You can practice with Aditi across San Francisco at Lovestory,
-            Haum, Mission Cliffs, The Castro Room, and SF Parks & Rec offerings.
+            You can practice with Aditi across San Francisco at
+            <a href="https://lovestoryyoga.com/schedule-valencia">Lovestory</a>,
+            <a href="https://www.haumstudios.com/schedule">Haum</a>, Mission
+            Cliffs,
+            <a href="https://www.castroroom.com/schedule">The Castro Room</a>,
+            and SF Parks & Rec offerings.
           </p>
         </div>
       </section>
@@ -448,19 +497,27 @@
       <section class="section locations" id="locations">
         <div class="section__heading">
           <p class="eyebrow">Locations</p>
-          <p>
-            Each location links to its live schedule or map. The 49 South Van
-            Ness image shows the Wednesday class space.
-          </p>
         </div>
         <div class="venue-grid">
           <article class="venue-card">
+            <img
+              class="venue-card__image"
+              src="./upper-noe-rec-center.png"
+              alt="Upper Noe Valley Rec Center practice room with wood floor and vaulted ceiling"
+            />
             <div>
-              <p>Upper Noe Valley + Civic Center</p>
-              <h3>SF Parks & Rec</h3>
+              <p>Upper Noe Valley Rec Center</p>
+              <a
+                class="venue-card__address"
+                href="https://www.google.com/maps/search/?api=1&amp;query=Upper+Noe+Recreation+Center+295+Day+St+San+Francisco"
+              >
+                295 Day Street
+              </a>
             </div>
-            <span>Rec center sessions and free city class</span>
-            <a href="https://anc.apm.activecommunities.com/sfrecpark/activity/search?onlineSiteId=0&amp;activity_select_param=2&amp;instructor_ids=520&amp;viewMode=list">
+            <a
+              class="venue-card__cta"
+              href="https://anc.apm.activecommunities.com/sfrecpark/activity/search?onlineSiteId=0&amp;activity_select_param=2&amp;instructor_ids=520&amp;viewMode=list"
+            >
               SF Rec schedule
             </a>
           </article>
@@ -471,65 +528,117 @@
               alt="49 South Van Ness lobby where the free Wednesday yoga class meets"
             />
             <div>
-              <p>Civic Center</p>
-              <h3>49 South Van Ness</h3>
+              <p>SF Arts Commission</p>
+              <a
+                class="venue-card__address"
+                href="https://www.google.com/maps/search/?api=1&amp;query=49+South+Van+Ness+San+Francisco"
+              >
+                49 South Van Ness
+              </a>
             </div>
-            <span>Free Wednesday lunchtime class</span>
-            <a href="https://www.google.com/maps/search/?api=1&amp;query=49+South+Van+Ness+San+Francisco">
+            <a
+              class="venue-card__cta"
+              href="https://www.google.com/maps/search/?api=1&amp;query=49+South+Van+Ness+San+Francisco"
+            >
               View location
             </a>
           </article>
           <article class="venue-card">
             <div>
-              <p>Mission</p>
-              <h3>Mission Cliffs</h3>
+              <p>Mission Cliffs</p>
+              <a
+                class="venue-card__address"
+                href="https://www.google.com/maps/search/?api=1&amp;query=Mission+Cliffs+2295+Harrison+St+San+Francisco"
+              >
+                2295 Harrison Street
+              </a>
             </div>
-            <span>Touchstone fitness calendar</span>
-            <a href="https://touchstoneclimbing.com/mission-cliffs/calendar/">
+            <a
+              class="venue-card__cta"
+              href="https://touchstoneclimbing.com/mission-cliffs/calendar/"
+            >
               Mission Cliffs calendar
             </a>
           </article>
           <article class="venue-card">
             <div>
-              <p>Mission</p>
-              <h3>Lovestory</h3>
+              <p>Lovestory</p>
+              <div class="venue-card__addresses">
+                <a
+                  class="venue-card__address"
+                  href="https://www.google.com/maps/search/?api=1&amp;query=Love+Story+Yoga+473+Valencia+Street+San+Francisco"
+                >
+                  473 Valencia Street
+                </a>
+                <a
+                  class="venue-card__address"
+                  href="https://www.google.com/maps/search/?api=1&amp;query=Love+Story+Yoga+Marin+Country+Mart+Larkspur"
+                >
+                  Marin Country Mart, Larkspur
+                </a>
+              </div>
             </div>
-            <span>Studio practice</span>
-            <a href="https://lovestoryyoga.com/schedule?_mt=%2Fschedule%2Fdaily%2F48541%3FactiveDate%3D2026-07-12">
+            <a
+              class="venue-card__cta"
+              href="https://lovestoryyoga.com/schedule?_mt=%2Fschedule%2Fdaily%2F48541%3FactiveDate%3D2026-07-12"
+            >
               Lovestory schedule
             </a>
           </article>
           <article class="venue-card">
             <div>
-              <p>Mission / Haight</p>
-              <h3>Haum</h3>
+              <p>Haum</p>
+              <div class="venue-card__addresses">
+                <a
+                  class="venue-card__address"
+                  href="https://www.google.com/maps/search/?api=1&amp;query=HAUM+STUDIOS+MISSION+2973+16th+St+5th+Floor+San+Francisco"
+                >
+                  2973 16th St, 5th Floor
+                </a>
+                <a
+                  class="venue-card__address"
+                  href="https://www.google.com/maps/search/?api=1&amp;query=HAUM+STUDIOS+HAIGHT+ASHBURY+780+Stanyan+Street+San+Francisco"
+                >
+                  780 Stanyan Street
+                </a>
+              </div>
             </div>
-            <span>Studio practice</span>
-            <a href="https://www.haumstudios.com/schedule">Haum schedule</a>
+            <a class="venue-card__cta" href="https://www.haumstudios.com/schedule">Haum schedule</a>
           </article>
           <article class="venue-card">
             <div>
-              <p>Castro</p>
-              <h3>The Castro Room</h3>
+              <p>The Castro Room</p>
+              <a
+                class="venue-card__address"
+                href="https://www.google.com/maps/search/?api=1&amp;query=The+Castro+Room+97+Collingwood+St+San+Francisco"
+              >
+                97 Collingwood Street
+              </a>
             </div>
-            <span>Community class</span>
-            <a href="https://www.castroroom.com/schedule">Castro Room schedule</a>
+            <a class="venue-card__cta" href="https://www.castroroom.com/schedule">Castro Room schedule</a>
           </article>
         </div>
       </section>
 
       <section class="section contact" id="instagram" aria-labelledby="instagram-title">
         <div>
-          <p class="eyebrow">Instagram</p>
-          <h2 id="instagram-title">Follow Aditi Yoga SF</h2>
+          <p class="eyebrow">Follow</p>
         </div>
         <p>
-          Follow along for schedule updates, class notes, and community practice
+          Follow along for schedule updates and community practice
           announcements.
         </p>
-        <a class="button button--primary" href="https://www.instagram.com/aditi_yoga_sf/">
-          Open Instagram
-        </a>
+        <div class="contact__actions">
+          <a class="button button--primary" href="https://www.instagram.com/aditi_yoga_sf/">
+            Open Instagram
+          </a>
+          <a
+            class="button button--outline"
+            href="https://calendar.google.com/calendar/render?cid=communityflowsf%40gmail.com"
+          >
+            Add Calendar
+          </a>
+        </div>
       </section>
     </main>
   </body>

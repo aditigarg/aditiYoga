@@ -58,8 +58,9 @@ main {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center top;
   filter: blur(5px);
-  transform: scale(1.035);
+  transform: scale(1.02);
 }
 
 .hero__overlay {
@@ -161,7 +162,7 @@ h3 {
 
 .button,
 .schedule-link,
-.venue-card a {
+.venue-card__cta {
   min-height: 46px;
   display: inline-flex;
   align-items: center;
@@ -177,7 +178,7 @@ h3 {
 
 .button:hover,
 .schedule-link:hover,
-.venue-card a:hover {
+.venue-card__cta:hover {
   transform: translateY(-1px);
 }
 
@@ -222,6 +223,18 @@ h3 {
 
 .intro__copy p {
   margin-bottom: 20px;
+}
+
+.intro__copy a {
+  color: var(--moss-dark);
+  font-weight: 800;
+  text-decoration: underline;
+  text-decoration-color: var(--clay);
+  text-underline-offset: 4px;
+}
+
+.intro__copy a:hover {
+  color: var(--moss);
 }
 
 .section__heading {
@@ -313,7 +326,7 @@ h3 {
 }
 
 .schedule-link,
-.venue-card a {
+.venue-card__cta {
   border-color: var(--moss);
   color: var(--moss-dark);
 }
@@ -358,12 +371,28 @@ h3 {
   font-size: 0.9rem;
 }
 
+.venue-card__address {
+  display: inline-flex;
+  margin: -4px 0 12px;
+  color: var(--moss-dark);
+  font-size: 0.95rem;
+  font-weight: 800;
+  text-decoration: underline;
+  text-decoration-color: var(--clay);
+  text-underline-offset: 4px;
+}
+
+.venue-card__addresses {
+  display: grid;
+  justify-items: start;
+}
+
 .venue-card span {
   display: block;
   line-height: 1.45;
 }
 
-.venue-card a {
+.venue-card__cta {
   width: 100%;
   margin-top: 28px;
 }
@@ -376,6 +405,13 @@ h3 {
 .contact > div,
 .contact p {
   max-width: 520px;
+}
+
+.contact__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: flex-end;
 }
 
 .contact .button--primary {
@@ -413,6 +449,7 @@ h3 {
   }
 
   .hero__actions,
+  .contact__actions,
   .contact {
     align-items: stretch;
     flex-direction: column;
@@ -420,7 +457,7 @@ h3 {
 
   .button,
   .schedule-link,
-  .venue-card a {
+  .venue-card__cta {
     width: 100%;
   }
 
