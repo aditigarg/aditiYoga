@@ -58,6 +58,8 @@ main {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  filter: blur(5px);
+  transform: scale(1.035);
 }
 
 .hero__overlay {
@@ -158,7 +160,7 @@ h3 {
 }
 
 .button,
-.class-card__meta a,
+.schedule-link,
 .venue-card a {
   min-height: 46px;
   display: inline-flex;
@@ -174,7 +176,7 @@ h3 {
 }
 
 .button:hover,
-.class-card__meta a:hover,
+.schedule-link:hover,
 .venue-card a:hover {
   transform: translateY(-1px);
 }
@@ -187,6 +189,16 @@ h3 {
 .button--secondary {
   border-color: rgba(255, 255, 255, 0.48);
   color: #fffaf0;
+}
+
+.button--outline {
+  border-color: var(--moss-dark);
+  background: transparent;
+  color: var(--moss-dark);
+}
+
+.button--outline:hover {
+  background: #f6eee6;
 }
 
 .section {
@@ -223,73 +235,104 @@ h3 {
   line-height: 1.7;
 }
 
-.calendar__list {
-  display: grid;
-  gap: 14px;
+.calendar-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 22px;
 }
 
-.class-card {
-  display: grid;
-  grid-template-columns: 170px minmax(0, 1fr) 180px;
-  gap: 22px;
-  align-items: center;
-  min-height: 150px;
-  border: 1px solid var(--line);
-  background: var(--paper);
-  padding: 22px;
-}
-
-.class-card__date {
-  min-height: 106px;
-  display: grid;
-  align-content: center;
-  border-left: 5px solid var(--clay);
-  padding-left: 18px;
-  background: #f6eee6;
-}
-
-.class-card__date strong {
-  font-size: 1.25rem;
-}
-
-.class-card__date span,
-.class-card__body p,
-.class-card__meta span,
 .venue-card p,
 .venue-card span,
 .contact p {
   color: var(--muted);
 }
 
-.class-card__venue {
-  margin-bottom: 6px;
+.schedule-table-wrap {
+  overflow-x: auto;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.calendar-embed {
+  border: 1px solid var(--line);
+  background: var(--paper);
+  min-height: 640px;
+  overflow: hidden;
+}
+
+.calendar-embed iframe {
+  display: block;
+  width: 100%;
+  height: 720px;
+  border: 0;
+}
+
+.schedule-table {
+  width: 100%;
+  min-width: 820px;
+  border-collapse: collapse;
+  background: var(--paper);
+}
+
+.schedule-table th,
+.schedule-table td {
+  border-bottom: 1px solid var(--line);
+  padding: 20px 16px;
+  text-align: left;
+  vertical-align: middle;
+}
+
+.schedule-table th {
   color: var(--moss);
-  font-size: 0.78rem;
+  font-size: 0.74rem;
   font-weight: 800;
   text-transform: uppercase;
 }
 
-.class-card__body p {
-  max-width: 560px;
-  margin-bottom: 0;
-  line-height: 1.6;
+.schedule-table td {
+  color: var(--foreground);
+  font-size: 1rem;
+  line-height: 1.45;
 }
 
-.class-card__meta {
-  display: grid;
-  gap: 14px;
-  justify-items: start;
+.schedule-table tr:last-child td {
+  border-bottom: 0;
 }
 
-.class-card__meta a,
+.location-link {
+  color: var(--moss-dark);
+  font-weight: 800;
+  text-decoration: underline;
+  text-decoration-color: var(--clay);
+  text-underline-offset: 4px;
+}
+
+.location-link:hover {
+  color: var(--moss);
+}
+
+.schedule-link,
 .venue-card a {
   border-color: var(--moss);
   color: var(--moss-dark);
 }
 
+.schedule-link {
+  width: 100%;
+  min-width: 150px;
+  background: transparent;
+  color: var(--moss-dark);
+}
+
+.schedule-link:hover {
+  background: #f6eee6;
+  border-color: var(--moss-dark);
+}
+
 .venue-grid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 14px;
 }
 
@@ -301,6 +344,13 @@ h3 {
   border: 1px solid var(--line);
   background: var(--paper);
   padding: 22px;
+}
+
+.venue-card__image {
+  width: calc(100% + 44px);
+  height: 170px;
+  margin: -22px -22px 20px;
+  object-fit: cover;
 }
 
 .venue-card p {
@@ -343,13 +393,8 @@ h3 {
   }
 
   .intro,
-  .class-card,
   .venue-grid {
     grid-template-columns: 1fr;
-  }
-
-  .class-card__meta {
-    justify-items: stretch;
   }
 }
 
@@ -374,7 +419,7 @@ h3 {
   }
 
   .button,
-  .class-card__meta a,
+  .schedule-link,
   .venue-card a {
     width: 100%;
   }
