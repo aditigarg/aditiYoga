@@ -5,9 +5,9 @@ const sfRecSignup =
 
 const instagramUrl = "https://www.instagram.com/aditi_yoga_sf/";
 const calendarSubscribeUrl =
-  "https://calendar.google.com/calendar/render?cid=communityflowsf%40gmail.com";
+  "https://calendar.google.com/calendar/u/1?cid=Y29tbXVuaXR5Zmxvd3NmQGdtYWlsLmNvbQ";
 const calendarEmbedBase =
-  "https://calendar.google.com/calendar/embed?height=720&wkst=1&ctz=America%2FLos_Angeles&showPrint=0&showTabs=0&showCalendars=0&showTitle=0&src=communityflowsf%40gmail.com";
+  "https://calendar.google.com/calendar/embed?height=720&wkst=1&ctz=America%2FLos_Angeles&showPrint=0&showTabs=0&showCalendars=0&showTitle=0&src=Y29tbXVuaXR5Zmxvd3NmQGdtYWlsLmNvbQ";
 
 const locationMaps: Record<string, string> = {
   "49 South Van Ness":
