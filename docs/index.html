@@ -1,0 +1,536 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Aditi Yoga | San Francisco Classes</title>
+    <meta
+      name="description"
+      content="Bio, live class calendar, and signup links for Aditi's San Francisco yoga classes."
+    />
+    <style>
+      :root {
+        --background: #fbfaf6;
+        --foreground: #20221c;
+        --muted: #6f7468;
+        --line: #ded8ca;
+        --moss: #52694a;
+        --moss-dark: #25351f;
+        --clay: #b76d4b;
+        --paper: #fffdf8;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        background: var(--background);
+        color: var(--foreground);
+        font-family: Arial, Helvetica, sans-serif;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .hero {
+        position: relative;
+        min-height: 88vh;
+        display: grid;
+        align-items: end;
+        overflow: hidden;
+        background: var(--moss-dark);
+      }
+
+      .hero__image {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        filter: blur(5px);
+        transform: scale(1.035);
+      }
+
+      .hero__overlay {
+        position: absolute;
+        inset: 0;
+        background:
+          linear-gradient(
+            90deg,
+            rgba(18, 24, 16, 0.72),
+            rgba(18, 24, 16, 0.34) 48%,
+            rgba(18, 24, 16, 0.1)
+          ),
+          linear-gradient(0deg, rgba(18, 24, 16, 0.72), rgba(18, 24, 16, 0.05) 52%);
+      }
+
+      .nav {
+        position: absolute;
+        top: 24px;
+        left: 50%;
+        z-index: 2;
+        display: flex;
+        gap: 6px;
+        width: min(92vw, 1120px);
+        justify-content: flex-end;
+        transform: translateX(-50%);
+      }
+
+      .nav a {
+        min-height: 40px;
+        display: inline-flex;
+        align-items: center;
+        border: 1px solid rgba(255, 255, 255, 0.38);
+        padding: 0 16px;
+        color: #fffaf0;
+        background: rgba(20, 25, 18, 0.25);
+        backdrop-filter: blur(14px);
+        font-size: 0.9rem;
+      }
+
+      .hero__content {
+        position: relative;
+        z-index: 1;
+        width: min(92vw, 1120px);
+        margin: 0 auto;
+        padding: 160px 0 72px;
+        color: #fffaf0;
+      }
+
+      .eyebrow {
+        margin: 0 0 14px;
+        color: var(--clay);
+        font-size: 0.78rem;
+        font-weight: 800;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      .hero .eyebrow {
+        color: #f8c7a7;
+      }
+
+      h1,
+      h2,
+      h3,
+      p {
+        margin-top: 0;
+      }
+
+      h1 {
+        max-width: 720px;
+        margin-bottom: 18px;
+        font-size: clamp(4rem, 12vw, 8.8rem);
+        line-height: 0.88;
+        letter-spacing: 0;
+      }
+
+      h2 {
+        font-size: clamp(2rem, 5vw, 4rem);
+        line-height: 1;
+        letter-spacing: 0;
+      }
+
+      h3 {
+        margin-bottom: 10px;
+        font-size: 1.3rem;
+        line-height: 1.15;
+      }
+
+      .hero__content > p:not(.eyebrow) {
+        max-width: 620px;
+        margin-bottom: 28px;
+        color: rgba(255, 250, 240, 0.88);
+        font-size: clamp(1.1rem, 2vw, 1.35rem);
+        line-height: 1.55;
+      }
+
+      .button,
+      .venue-card a {
+        min-height: 46px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid transparent;
+        padding: 0 18px;
+        font-weight: 800;
+        transition:
+          transform 180ms ease,
+          background 180ms ease,
+          border-color 180ms ease;
+      }
+
+      .button:hover,
+      .venue-card a:hover {
+        transform: translateY(-1px);
+      }
+
+      .button--primary {
+        background: #fffaf0;
+        color: var(--moss-dark);
+      }
+
+      .button--outline {
+        border-color: var(--moss-dark);
+        background: transparent;
+        color: var(--moss-dark);
+      }
+
+      .button--outline:hover {
+        background: #f6eee6;
+      }
+
+      .section {
+        width: min(92vw, 1120px);
+        margin: 0 auto;
+        padding: 86px 0;
+      }
+
+      .intro {
+        display: grid;
+        grid-template-columns: minmax(0, 0.85fr) minmax(320px, 1fr);
+        gap: 52px;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .intro__copy {
+        color: var(--muted);
+        font-size: 1.1rem;
+        line-height: 1.8;
+      }
+
+      .intro__copy p {
+        margin-bottom: 20px;
+      }
+
+      .section__heading {
+        max-width: 760px;
+        margin-bottom: 34px;
+      }
+
+      .section__heading > p:not(.eyebrow),
+      .venue-card p,
+      .venue-card span,
+      .contact p {
+        color: var(--muted);
+      }
+
+      .section__heading > p:not(.eyebrow) {
+        font-size: 1.08rem;
+        line-height: 1.7;
+      }
+
+      .calendar-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 22px;
+      }
+
+      .calendar-embed {
+        border: 1px solid var(--line);
+        background: var(--paper);
+        min-height: 640px;
+        overflow: hidden;
+      }
+
+      .calendar-embed iframe {
+        display: block;
+        width: 100%;
+        height: 720px;
+        border: 0;
+      }
+
+      .venue-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 14px;
+      }
+
+      .venue-card {
+        min-height: 250px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        border: 1px solid var(--line);
+        background: var(--paper);
+        padding: 22px;
+      }
+
+      .venue-card__image {
+        width: calc(100% + 44px);
+        height: 170px;
+        margin: -22px -22px 20px;
+        object-fit: cover;
+      }
+
+      .venue-card p {
+        margin-bottom: 10px;
+        font-size: 0.9rem;
+      }
+
+      .venue-card span {
+        display: block;
+        line-height: 1.45;
+      }
+
+      .venue-card a {
+        width: 100%;
+        margin-top: 28px;
+        border-color: var(--moss);
+        color: var(--moss-dark);
+      }
+
+      .contact {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        align-items: center;
+        justify-content: space-between;
+        border-top: 1px solid var(--line);
+      }
+
+      .contact > div,
+      .contact p {
+        max-width: 520px;
+      }
+
+      .contact .button--primary {
+        background: var(--moss-dark);
+        color: #fffaf0;
+      }
+
+      @media (max-width: 900px) {
+        .hero {
+          min-height: 760px;
+        }
+
+        .nav {
+          justify-content: center;
+        }
+
+        .intro,
+        .venue-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 560px) {
+        .nav {
+          top: 14px;
+        }
+
+        .nav a {
+          padding: 0 10px;
+          font-size: 0.82rem;
+        }
+
+        .hero__content {
+          padding-bottom: 46px;
+        }
+
+        .button,
+        .venue-card a {
+          width: 100%;
+        }
+
+        .calendar-actions,
+        .contact {
+          align-items: stretch;
+          flex-direction: column;
+        }
+
+        .section {
+          padding: 62px 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section class="hero" aria-labelledby="hero-title">
+        <img
+          class="hero__image"
+          src="./aditi-yoga-hero.png"
+          alt="A calm yoga class in a sunny San Francisco studio"
+        />
+        <div class="hero__overlay"></div>
+        <nav class="nav" aria-label="Primary navigation">
+          <a href="#weekly">Weekly</a>
+          <a href="#monthly">Monthly</a>
+          <a href="#locations">Locations</a>
+          <a href="https://www.instagram.com/aditi_yoga_sf/">Instagram</a>
+        </nav>
+        <div class="hero__content">
+          <p class="eyebrow">San Francisco yoga classes</p>
+          <h1 id="hero-title">Aditi Yoga</h1>
+          <p>
+            Grounded, breath-led yoga for people who want to feel stronger,
+            steadier, and more at home in their bodies.
+          </p>
+          <a class="button button--primary" href="#weekly">See upcoming classes</a>
+        </div>
+      </section>
+
+      <section class="section intro" aria-labelledby="bio-title">
+        <div>
+          <p class="eyebrow">Practice with Aditi</p>
+          <h2 id="bio-title">Practice that makes room for real life.</h2>
+        </div>
+        <div class="intro__copy">
+          <p>
+            Aditi teaches yoga with an emphasis on clear alignment, steady
+            breath, and an atmosphere that feels welcoming without losing depth.
+            Her classes move with intention: enough heat to build capacity,
+            enough stillness to listen, and enough choice to meet the body you
+            arrived with today.
+          </p>
+          <p>
+            You can practice with Aditi across San Francisco at Lovestory,
+            Haum, Mission Cliffs, The Castro Room, and SF Parks & Rec offerings.
+          </p>
+        </div>
+      </section>
+
+      <section class="section calendar" id="weekly" aria-labelledby="weekly-title">
+        <div class="section__heading">
+          <p class="eyebrow">Live week view</p>
+          <h2 id="weekly-title">Upcoming week</h2>
+          <p>
+            A live Google Calendar view of where Aditi is teaching this week.
+            Updates here will stay in sync with the public calendar.
+          </p>
+          <div class="calendar-actions" aria-label="Calendar and social links">
+            <a
+              class="button button--outline"
+              href="https://calendar.google.com/calendar/render?cid=communityflowsf%40gmail.com"
+            >
+              Add to Google Calendar
+            </a>
+            <a class="button button--outline" href="https://www.instagram.com/aditi_yoga_sf/">
+              Follow on Instagram
+            </a>
+          </div>
+        </div>
+        <div class="calendar-embed">
+          <iframe
+            src="https://calendar.google.com/calendar/embed?height=720&amp;wkst=1&amp;ctz=America%2FLos_Angeles&amp;showPrint=0&amp;showTabs=0&amp;showCalendars=0&amp;showTitle=0&amp;src=communityflowsf%40gmail.com&amp;mode=WEEK"
+            title="Aditi Yoga upcoming week calendar"
+          ></iframe>
+        </div>
+      </section>
+
+      <section class="section monthly" id="monthly" aria-labelledby="monthly-title">
+        <div class="section__heading">
+          <p class="eyebrow">Live month view</p>
+          <h2 id="monthly-title">Upcoming month</h2>
+          <p>
+            A broader month view for planning ahead. Select an event in the
+            calendar for the latest location and time details.
+          </p>
+        </div>
+        <div class="calendar-embed">
+          <iframe
+            src="https://calendar.google.com/calendar/embed?height=720&amp;wkst=1&amp;ctz=America%2FLos_Angeles&amp;showPrint=0&amp;showTabs=0&amp;showCalendars=0&amp;showTitle=0&amp;src=communityflowsf%40gmail.com&amp;mode=MONTH"
+            title="Aditi Yoga upcoming month calendar"
+          ></iframe>
+        </div>
+      </section>
+
+      <section class="section locations" id="locations">
+        <div class="section__heading">
+          <p class="eyebrow">Locations</p>
+          <p>
+            Each location links to its live schedule or map. The 49 South Van
+            Ness image shows the Wednesday class space.
+          </p>
+        </div>
+        <div class="venue-grid">
+          <article class="venue-card">
+            <div>
+              <p>Upper Noe Valley + Civic Center</p>
+              <h3>SF Parks & Rec</h3>
+            </div>
+            <span>Rec center sessions and free city class</span>
+            <a href="https://anc.apm.activecommunities.com/sfrecpark/activity/search?onlineSiteId=0&amp;activity_select_param=2&amp;instructor_ids=520&amp;viewMode=list">
+              SF Rec schedule
+            </a>
+          </article>
+          <article class="venue-card">
+            <img
+              class="venue-card__image"
+              src="./49-south-van-ness.png"
+              alt="49 South Van Ness lobby where the free Wednesday yoga class meets"
+            />
+            <div>
+              <p>Civic Center</p>
+              <h3>49 South Van Ness</h3>
+            </div>
+            <span>Free Wednesday lunchtime class</span>
+            <a href="https://www.google.com/maps/search/?api=1&amp;query=49+South+Van+Ness+San+Francisco">
+              View location
+            </a>
+          </article>
+          <article class="venue-card">
+            <div>
+              <p>Mission</p>
+              <h3>Mission Cliffs</h3>
+            </div>
+            <span>Touchstone fitness calendar</span>
+            <a href="https://touchstoneclimbing.com/mission-cliffs/calendar/">
+              Mission Cliffs calendar
+            </a>
+          </article>
+          <article class="venue-card">
+            <div>
+              <p>Mission</p>
+              <h3>Lovestory</h3>
+            </div>
+            <span>Studio practice</span>
+            <a href="https://lovestoryyoga.com/schedule?_mt=%2Fschedule%2Fdaily%2F48541%3FactiveDate%3D2026-07-12">
+              Lovestory schedule
+            </a>
+          </article>
+          <article class="venue-card">
+            <div>
+              <p>Mission / Haight</p>
+              <h3>Haum</h3>
+            </div>
+            <span>Studio practice</span>
+            <a href="https://www.haumstudios.com/schedule">Haum schedule</a>
+          </article>
+          <article class="venue-card">
+            <div>
+              <p>Castro</p>
+              <h3>The Castro Room</h3>
+            </div>
+            <span>Community class</span>
+            <a href="https://www.castroroom.com/schedule">Castro Room schedule</a>
+          </article>
+        </div>
+      </section>
+
+      <section class="section contact" id="instagram" aria-labelledby="instagram-title">
+        <div>
+          <p class="eyebrow">Instagram</p>
+          <h2 id="instagram-title">Follow Aditi Yoga SF</h2>
+        </div>
+        <p>
+          Follow along for schedule updates, class notes, and community practice
+          announcements.
+        </p>
+        <a class="button button--primary" href="https://www.instagram.com/aditi_yoga_sf/">
+          Open Instagram
+        </a>
+      </section>
+    </main>
+  </body>
+</html>
