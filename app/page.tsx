@@ -325,7 +325,7 @@ export default function Home() {
             <a href="https://www.hinduismtoday.com/magazine/jul-aug-sept-2023/i-learned-yoga-from-a-living-master/">
               Swami Bua
             </a>{" "}
-            (who was nearly 100 years old at the time). More recently, she’s
+            (who was nearly 100 years old at the time). More recently, she has
             explored interests in Ayurveda, Advaita Vedanta, Panchakarma and
             Karma Yoga (as it relates to bringing startups to success in the Bay
             Area as well), and has deepened her training in many different
